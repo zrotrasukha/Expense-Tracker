@@ -31,7 +31,6 @@ Thumbs.db
 *.tmp
 
 # 🚫 Prevent accidental commits of frontend build inside backend (if served)
-server/client/dist/
 
 # 🔂 Bun internal weird stuff (if any)
 .bun/
