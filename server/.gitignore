@@ -1,0 +1,42 @@
+# 🔥 Node / Bun modules
+node_modules/
+bun.lockb
+
+# 🔒 Environment
+.env
+.env.*.local
+
+# 🏗️ Build output
+dist/
+build/
+.client/
+.server/
+
+# 🧪 Test coverage
+coverage/
+*.log
+
+# ✨ IDEs / Editor config
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 💥 OS junk
+.DS_Store
+Thumbs.db
+
+# 👻 System files
+*.bak
+*.tmp
+
+# 🚫 Prevent accidental commits of frontend build inside backend (if served)
+server/client/dist/
+
+# 🔂 Bun internal weird stuff (if any)
+.bun/
+
+# 🧹 Cache folders
+.cache/
+.next/
+out/
