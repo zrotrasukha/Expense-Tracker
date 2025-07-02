@@ -1,13 +1,13 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
-import { expenseRouter } from "./router/exenpseRouter.ts";
-import { serveStatic } from 'hono/deno'
-import { cors } from 'https://deno.land/x/hono@v4.3.11/middleware.ts';
+import { expenseRouter } from "./router/expenseRouter";
+import { serveStatic } from 'hono/bun'
+import { cors } from 'hono/cors';
 
 
 const app = new Hono();
 app.use('/api/*', cors({
-  origin: 'http://localhost:3000'
+  origin: '*'
 }));
 app.use("*", logger());
 app.use('*', serveStatic({ root: '../client/dist' }))
