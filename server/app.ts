@@ -9,8 +9,8 @@ app.use('/api/*', cors({
   origin: '*'
 }));
 app.use("*", logger());
-app.use('*', serveStatic({ root: '../client/dist' }))
-app.use('*', serveStatic({ path: '../client/index.html' }))
+app.use('*', serveStatic({ root: './client/dist' }))
+app.use('*', serveStatic({ path: './client/index.html' }))
 app.route("/api/expenses", expenseRouter);
 
 
