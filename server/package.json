@@ -6,7 +6,14 @@
   "devDependencies": {
     "@types/bun": "latest"
   },
+  "scripts":{
+    "dev": "bun --watch main.ts",
+  },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.7.0",
+    "hono": "^4.8.3"
   }
 }
