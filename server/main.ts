@@ -4,7 +4,7 @@ const servehandler = (req: Request) => {
   return app.fetch(req);
 };
 
-console.log(`🧈 Server is running at http://localhost:4000`);
+console.log(`🐇 Server is running at http://localhost:4000`);
 Bun.serve({
   port: 4000,
   fetch: servehandler,
