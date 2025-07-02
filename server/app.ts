@@ -4,7 +4,6 @@ import { expenseRouter } from "./router/expenseRouter";
 import { serveStatic } from 'hono/bun'
 import { cors } from 'hono/cors';
 
-
 const app = new Hono();
 app.use('/api/*', cors({
   origin: '*'
