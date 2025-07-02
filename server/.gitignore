@@ -7,7 +7,6 @@ bun.lockb
 .env.*.local
 
 # 🏗️ Build output
-dist/
 build/
 .client/
 .server/
