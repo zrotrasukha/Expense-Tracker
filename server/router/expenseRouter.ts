@@ -3,9 +3,9 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 
 const createPostSchema = z.object({
-    id: z.number().int().positive(),
+    id: z.number().int().positive(), // auto increment
     title: z.string().min(1).max(100),
-    amount: z.number().int().min(0, ).positive(),
+    amount: z.number().int().min(0,).positive(),
 });
 
 type Expense = z.infer<typeof createPostSchema>;
@@ -29,16 +29,21 @@ const fakeExpense: Expense[] = [
 ];
 
 export const expenseRouter = new Hono()
-    .get("/" , async (c) => {
+    .get("/", async (c) => {
+        await new Promise((r) => setTimeout(r, 1000));
         return c.json({ expense: fakeExpense });
-        })
-        .get("/total", async (c) => {
+    })
+    .get("/total", async (c) => {
+        await new Promise((r)=> setTimeout(r, 1000)); // Simulate a delay
         const total = fakeExpense.reduce((sum, exp) => sum + exp.amount, 0);
         return c.json({ total });
     })
-    .post("/", zValidator("json", createPostSchema), async (c) => {
+    .post("/create", zValidator("json", createPostSchema), async (c) => {
         const newExpense = c.req.valid("json") as Expense;
-        fakeExpense.push(newExpense);
+        // Auto-increment id before pushing
+        const nextId = fakeExpense.length > 0 ? Math.max(...fakeExpense.map(e => e.id)) + 1 : 1;
+        const expenseWithId = { ...newExpense, id: nextId };
+        fakeExpense.push(expenseWithId);
         return c.json({ message: "Expense added successfully", expense: newExpense }, 201);
     })
     .get("/:id{[0-9]+}", async (c) => {
