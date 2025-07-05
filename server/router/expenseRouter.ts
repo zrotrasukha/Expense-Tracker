@@ -30,11 +30,9 @@ const fakeExpense: Expense[] = [
 
 export const expenseRouter = new Hono()
     .get("/", async (c) => {
-        await new Promise((r) => setTimeout(r, 1000));
         return c.json({ expense: fakeExpense });
     })
     .get("/total", async (c) => {
-        await new Promise((r)=> setTimeout(r, 1000)); // Simulate a delay
         const total = fakeExpense.reduce((sum, exp) => sum + exp.amount, 0);
         return c.json({ total });
     })
