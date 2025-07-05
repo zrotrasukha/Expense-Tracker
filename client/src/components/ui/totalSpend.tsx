@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./card.tsx"
+} from "@components/ui/card"
 
 type TotalSpendProps = {
     amount: number
