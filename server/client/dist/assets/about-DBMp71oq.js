@@ -1,0 +1,1 @@
+import{j as e}from"./index-Cp9MtVCX.js";const n=function(){return e.jsxDEV("div",{className:"p-2",children:"Hello from About!"},void 0,!1,{fileName:"/home/shivang/code/ExpenseTracker/client/src/routes/about.tsx?tsr-split=component",lineNumber:3,columnNumber:10},this)};export{n as component};
