@@ -6,10 +6,14 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "../components/ui/card"
+} from "@components/ui/card"
 
-
-export default function ExpenseTrackerCard({totalSpent}: {totalSpent: number}) {
+type propType = {
+    totalSpent: number | undefined;
+    error: Error | null;
+    isPending: boolean;
+}
+export default function ExpenseTrackerCard(prop: propType) {
    return (
     <Card className="min-w-md h-auto max-w-none w-xl mx-auto bg-zinc-800 text-white shadow-lg rounded-lg">
         <CardHeader>
@@ -17,11 +21,13 @@ export default function ExpenseTrackerCard({totalSpent}: {totalSpent: number}) {
             <CardDescription>Track your daily expenses and manage your budget.</CardDescription>
         </CardHeader>
         <CardContent>
-            <div className="text-2xl">{totalSpent}</div>
+            <div className="text-2xl">{prop.totalSpent}</div>
             <div className="flex flex-col gap-2">
                 <div className="flex justify-between">
                     <span className="font-medium">Total Spent:</span>
-                    <span>${totalSpent}</span>
+                    {prop.isPending && <span>Loading...</span>}
+                    {prop.error && <span>Error: {prop.error.message}</span>}
+                    <span>${prop.totalSpent}</span>
                 </div>
                 <div className="flex justify-between">
                     <span className="font-medium">Budget:</span>
